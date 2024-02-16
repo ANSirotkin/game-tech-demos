@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://blv2bodf0yrsv"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_6bv4g"]
+[ext_resource type="Script" path="res://scripts/state/state_machine.gd" id="2_e62yg"]
+[ext_resource type="PackedScene" uid="uid://dhjems1rchggx" path="res://objects/bullet.tscn" id="2_fues6"]
+[ext_resource type="Script" path="res://scripts/player/player_move.gd" id="3_itp5o"]
+[ext_resource type="Script" path="res://scripts/player/player_idle.gd" id="4_asvy1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_12rjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85dch"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l3i2r"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_6bv4g")
+bullet = ExtResource("2_fues6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.941176, 0, 0.698039, 1)
+position = Vector2(-2.08616e-07, -5.06639e-07)
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_12rjr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_85dch")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_e62yg")
+initial_state = NodePath("Player_Idle")
+
+[node name="Player_Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("3_itp5o")
+player = NodePath("../..")
+
+[node name="Player_Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_asvy1")
+player = NodePath("../..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Gun" type="Sprite2D" parent="."]
+modulate = Color(0.431373, 1, 1, 1)
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(20, 5)
+texture = SubResource("PlaceholderTexture2D_l3i2r")
+centered = false
+offset = Vector2(0, -0.5)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://br7x4ji1dppxj"]
+
+[ext_resource type="PackedScene" uid="uid://blv2bodf0yrsv" path="res://objects/player.tscn" id="1_f4mno"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8jn7o"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.196078, 0.196078, 1)
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(500, 300)
+texture = SubResource("PlaceholderTexture2D_8jn7o")
+
+[node name="Player" parent="." instance=ExtResource("1_f4mno")]

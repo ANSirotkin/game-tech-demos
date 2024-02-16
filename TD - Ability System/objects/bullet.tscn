@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhjems1rchggx"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_thxcp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fujcy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7m0a3"]
+size = Vector2(6, 6)
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_thxcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.403922, 0.690196, 0.227451, 1)
+scale = Vector2(5, 5)
+texture = SubResource("PlaceholderTexture2D_fujcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7m0a3")
+disabled = true
