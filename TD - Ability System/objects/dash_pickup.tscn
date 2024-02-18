@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://byslwoajo7kgh"]
+
+[ext_resource type="Script" path="res://scripts/misc/dash_pickup.gd" id="1_yhpex"]
+[ext_resource type="PackedScene" uid="uid://d4hfuvdlp8qfx" path="res://objects/abilities/dash.tscn" id="2_7k2yl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hbdqk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o36ol"]
+size = Vector2(16, 16)
+
+[node name="Dash_Pickup" type="Node2D" node_paths=PackedStringArray("ability")]
+script = ExtResource("1_yhpex")
+ability = NodePath("Dash")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(15, 15)
+texture = SubResource("PlaceholderTexture2D_hbdqk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_o36ol")
+
+[node name="Dash" parent="." instance=ExtResource("2_7k2yl")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

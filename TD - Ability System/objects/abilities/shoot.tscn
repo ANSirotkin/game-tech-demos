@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://5rjhu33hgivp"]
+
+[ext_resource type="Script" path="res://scripts/abilities/shoot.gd" id="1_q0eae"]
+[ext_resource type="PackedScene" uid="uid://dhjems1rchggx" path="res://objects/bullet.tscn" id="2_gqhij"]
+
+[node name="Shoot" type="Node"]
+script = ExtResource("1_q0eae")
+bullet = ExtResource("2_gqhij")

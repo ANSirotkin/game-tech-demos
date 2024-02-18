@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://br7x4ji1dppxj"]
+[gd_scene load_steps=4 format=3 uid="uid://br7x4ji1dppxj"]
 
-[ext_resource type="PackedScene" uid="uid://blv2bodf0yrsv" path="res://objects/player.tscn" id="1_f4mno"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8jn7o"]
+[ext_resource type="PackedScene" uid="uid://c3j1j6b2mij0s" path="res://ui/pause_menu.tscn" id="1_1opek"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_giudd"]
+[ext_resource type="PackedScene" uid="uid://beefryb77v0h0" path="res://ui/level_1.tscn" id="2_7vdkf"]
 
 [node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_giudd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.196078, 0.196078, 1)
-position = Vector2(0, 3.8147e-06)
-scale = Vector2(500, 300)
-texture = SubResource("PlaceholderTexture2D_8jn7o")
+[node name="Level1" parent="." instance=ExtResource("2_7vdkf")]
+process_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("1_f4mno")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="Pause_Menu" parent="CanvasLayer" node_paths=PackedStringArray("ringmaster") instance=ExtResource("1_1opek")]
+ringmaster = NodePath("../..")

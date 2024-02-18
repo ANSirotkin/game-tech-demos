@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkce78h3i4gph"]
+
+[ext_resource type="Script" path="res://scripts/misc/invisibility_pickup.gd" id="1_1rt4u"]
+[ext_resource type="PackedScene" uid="uid://bvws7adcanmfy" path="res://objects/abilities/invisibility.tscn" id="2_13qln"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bqkhk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h87w7"]
+size = Vector2(16, 16)
+
+[node name="Invisibility_Pickup" type="Node2D" node_paths=PackedStringArray("ability")]
+script = ExtResource("1_1rt4u")
+ability = NodePath("Invisibility")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.537255, 1, 1, 0.501961)
+scale = Vector2(15, 15)
+texture = SubResource("PlaceholderTexture2D_bqkhk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_h87w7")
+
+[node name="Invisibility" parent="." instance=ExtResource("2_13qln")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

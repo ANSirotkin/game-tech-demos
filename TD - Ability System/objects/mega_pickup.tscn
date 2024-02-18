@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cud2x1vjjceqp"]
+
+[ext_resource type="Script" path="res://scripts/misc/mega_pickup.gd" id="1_b4er2"]
+[ext_resource type="PackedScene" uid="uid://bips5s6kc8783" path="res://objects/abilities/mega.tscn" id="2_xgxct"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v5d4o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u3va"]
+size = Vector2(16, 16)
+
+[node name="Mega_Pickup" type="Node2D" node_paths=PackedStringArray("ability")]
+script = ExtResource("1_b4er2")
+ability = NodePath("Mega")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(15, 15)
+texture = SubResource("PlaceholderTexture2D_v5d4o")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2u3va")
+
+[node name="Mega" parent="." instance=ExtResource("2_xgxct")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

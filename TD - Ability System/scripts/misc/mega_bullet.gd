@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var speed := 300
+var speed := 200
 var lifetime := 2
+var dmg := 10
 
 func _ready():
 	velocity = Vector2(speed * cos(rotation), speed * sin(rotation))
@@ -13,3 +14,7 @@ func _physics_process(delta):
 
 func kill_yourself():
 	queue_free()
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("damageable"):
+		body.take_damage(dmg)

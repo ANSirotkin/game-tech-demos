@@ -1,20 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhjems1rchggx"]
+[gd_scene load_steps=5 format=3 uid="uid://dhjems1rchggx"]
 
-[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_thxcp"]
+[ext_resource type="Script" path="res://scripts/misc/bullet.gd" id="1_8ofnn"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fujcy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m0a3"]
 size = Vector2(6, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sext4"]
+size = Vector2(6, 6)
+
 [node name="Bullet" type="CharacterBody2D"]
-script = ExtResource("1_thxcp")
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_8ofnn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.403922, 0.690196, 0.227451, 1)
+modulate = Color(0.54902, 0.564706, 0.901961, 1)
 scale = Vector2(5, 5)
 texture = SubResource("PlaceholderTexture2D_fujcy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7m0a3")
 disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_sext4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

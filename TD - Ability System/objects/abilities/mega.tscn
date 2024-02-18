@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bips5s6kc8783"]
+
+[ext_resource type="Script" path="res://scripts/abilities/mega.gd" id="1_srkff"]
+[ext_resource type="PackedScene" uid="uid://cpnet282vyesh" path="res://objects/mega_bullet.tscn" id="2_y7gk0"]
+
+[node name="Mega" type="Node"]
+script = ExtResource("1_srkff")
+mega_bullet = ExtResource("2_y7gk0")

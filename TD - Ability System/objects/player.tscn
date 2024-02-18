@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://blv2bodf0yrsv"]
+[gd_scene load_steps=12 format=3 uid="uid://blv2bodf0yrsv"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_6bv4g"]
 [ext_resource type="Script" path="res://scripts/state/state_machine.gd" id="2_e62yg"]
 [ext_resource type="PackedScene" uid="uid://dhjems1rchggx" path="res://objects/bullet.tscn" id="2_fues6"]
 [ext_resource type="Script" path="res://scripts/player/player_move.gd" id="3_itp5o"]
 [ext_resource type="Script" path="res://scripts/player/player_idle.gd" id="4_asvy1"]
+[ext_resource type="Script" path="res://scripts/abilities/ability_manager.gd" id="6_go8yy"]
+[ext_resource type="PackedScene" uid="uid://5rjhu33hgivp" path="res://objects/abilities/shoot.tscn" id="7_6lfbh"]
+[ext_resource type="PackedScene" uid="uid://b1h4h3x313vth" path="res://ui/player_ui.tscn" id="7_m4475"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_12rjr"]
 
@@ -12,12 +15,13 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l3i2r"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ui") groups=["player"]]
 script = ExtResource("1_6bv4g")
+ui = NodePath("Player_UI")
 bullet = ExtResource("2_fues6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.941176, 0, 0.698039, 1)
+modulate = Color(0.694118, 0.662745, 0.564706, 1)
 position = Vector2(-2.08616e-07, -5.06639e-07)
 scale = Vector2(20, 20)
 texture = SubResource("PlaceholderTexture2D_12rjr")
@@ -37,6 +41,12 @@ player = NodePath("../..")
 script = ExtResource("4_asvy1")
 player = NodePath("../..")
 
+[node name="AbilityManager" type="Node" parent="." node_paths=PackedStringArray("ui")]
+script = ExtResource("6_go8yy")
+ui = NodePath("../Player_UI")
+
+[node name="Shoot" parent="AbilityManager" instance=ExtResource("7_6lfbh")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
@@ -47,3 +57,5 @@ scale = Vector2(20, 5)
 texture = SubResource("PlaceholderTexture2D_l3i2r")
 centered = false
 offset = Vector2(0, -0.5)
+
+[node name="Player_UI" parent="." instance=ExtResource("7_m4475")]

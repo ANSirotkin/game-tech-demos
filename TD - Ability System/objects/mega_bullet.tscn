@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpnet282vyesh"]
+
+[ext_resource type="Script" path="res://scripts/misc/mega_bullet.gd" id="1_kuvqr"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j4dv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da5og"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmc2n"]
+size = Vector2(10, 10)
+
+[node name="Mega_Bullet" type="CharacterBody2D"]
+script = ExtResource("1_kuvqr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.592157, 0.0627451, 0.360784, 1)
+scale = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_j4dv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_da5og")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vmc2n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

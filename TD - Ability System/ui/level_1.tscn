@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://beefryb77v0h0"]
+
+[ext_resource type="PackedScene" uid="uid://blv2bodf0yrsv" path="res://objects/player.tscn" id="1_uigc6"]
+[ext_resource type="PackedScene" uid="uid://byslwoajo7kgh" path="res://objects/dash_pickup.tscn" id="2_jkty7"]
+[ext_resource type="PackedScene" uid="uid://cud2x1vjjceqp" path="res://objects/mega_pickup.tscn" id="3_grlv5"]
+[ext_resource type="PackedScene" uid="uid://dkce78h3i4gph" path="res://objects/invisibility_pickup.tscn" id="4_2yl8g"]
+[ext_resource type="PackedScene" uid="uid://cwgo5g72ukthw" path="res://objects/enemy.tscn" id="5_lnhc1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2ntgo"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Ground" type="Sprite2D" parent="."]
+modulate = Color(0, 0.196078, 0.196078, 1)
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(500, 300)
+texture = SubResource("PlaceholderTexture2D_2ntgo")
+
+[node name="Player" parent="." instance=ExtResource("1_uigc6")]
+
+[node name="Mega_Pickup" parent="." instance=ExtResource("3_grlv5")]
+position = Vector2(75, 100)
+
+[node name="Invisibility_Pickup" parent="." instance=ExtResource("4_2yl8g")]
+position = Vector2(0, 100)
+
+[node name="Dash_Pickup" parent="." instance=ExtResource("2_jkty7")]
+position = Vector2(-75, 100)
+
+[node name="Enemy" parent="." instance=ExtResource("5_lnhc1")]
+position = Vector2(0, -100)

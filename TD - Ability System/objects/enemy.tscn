@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwgo5g72ukthw"]
+
+[ext_resource type="Script" path="res://scripts/misc/enemy.gd" id="1_g3w4k"]
+[ext_resource type="PackedScene" uid="uid://csaw7s21p1xy4" path="res://objects/dmg_number.tscn" id="2_bwewj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i1ovj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7xh5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xwxd"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msenp"]
+bg_color = Color(0.541176, 0, 0.12549, 1)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["damageable"]]
+script = ExtResource("1_g3w4k")
+health_bar = NodePath("ProgressBar")
+dmg_number = ExtResource("2_bwewj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_i1ovj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d7xh5")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 16.0
+offset_bottom = -13.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0xwxd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_msenp")
+show_percentage = false
