@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqa0j4qcu6uiq"]
+[gd_scene load_steps=5 format=3 uid="uid://cqa0j4qcu6uiq"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_clov7"]
 
 [sub_resource type="Gradient" id="Gradient_oeuqb"]
 offsets = PackedFloat32Array(0, 0.785714)
@@ -14,9 +16,12 @@ radius = 8.0
 height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_clov7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_qc5n2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5qk8y")
+
+[node name="Camera2D" type="Camera2D" parent="."]

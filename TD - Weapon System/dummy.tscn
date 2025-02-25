@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhcbe4f6lqpa8"]
+
+[ext_resource type="Script" path="res://dummy.gd" id="1_uk3ga"]
+
+[sub_resource type="Gradient" id="Gradient_ojuhk"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l2j8s"]
+gradient = SubResource("Gradient_ojuhk")
+width = 16
+height = 24
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5e7qh"]
+radius = 8.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m3j"]
+size = Vector2(16, 24)
+
+[node name="Dummy" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_uk3ga")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_l2j8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5e7qh")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_l3m3j")

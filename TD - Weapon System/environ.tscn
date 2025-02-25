@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://d1me4kcywfmxx"]
+[gd_scene load_steps=4 format=3 uid="uid://d1me4kcywfmxx"]
+
+[ext_resource type="PackedScene" uid="uid://cqa0j4qcu6uiq" path="res://player.tscn" id="1_ynlr2"]
+
+[sub_resource type="Gradient" id="Gradient_k22gf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fsefw"]
+gradient = SubResource("Gradient_k22gf")
+width = 512
+height = 256
 
 [node name="Environ" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ynlr2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+texture = SubResource("GradientTexture2D_fsefw")
