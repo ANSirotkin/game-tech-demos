@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1lbgpdujgujo"]
+
+[ext_resource type="Script" path="res://Weapons/Blicky/blicky_bullet.gd" id="1_74saj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iefhw"]
+size = Vector2(4, 2)
+
+[sub_resource type="Gradient" id="Gradient_3hq1m"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hmkry"]
+gradient = SubResource("Gradient_3hq1m")
+width = 4
+height = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n57an"]
+size = Vector2(6, 4)
+
+[node name="blicky_bullet" type="CharacterBody2D"]
+script = ExtResource("1_74saj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iefhw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_hmkry")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_n57an")

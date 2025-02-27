@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhcbe4f6lqpa8"]
 
-[ext_resource type="Script" path="res://dummy.gd" id="1_uk3ga"]
+[ext_resource type="Script" path="res://Dummy/dummy.gd" id="1_uk3ga"]
 
 [sub_resource type="Gradient" id="Gradient_ojuhk"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
@@ -17,7 +17,7 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m3j"]
 size = Vector2(16, 24)
 
-[node name="Dummy" type="StaticBody2D" groups=["enemy"]]
+[node name="Dummy" type="StaticBody2D" groups=["damageable", "enemy"]]
 script = ExtResource("1_uk3ga")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

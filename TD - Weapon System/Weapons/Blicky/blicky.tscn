@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2h7utqnn0rad"]
+
+[ext_resource type="Script" path="res://Weapons/Blicky/blicky.gd" id="1_1amfb"]
+[ext_resource type="Texture2D" uid="uid://mx2xvfdtrq3x" path="res://TheUltimateWeaponsPack_Sheet.png" id="1_h4qdc"]
+
+[node name="blicky" type="Node2D"]
+script = ExtResource("1_1amfb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(12, 2)
+texture = ExtResource("1_h4qdc")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(48, 48, 13, 6)
+
+[node name="Projectile_Spawn" type="Node2D" parent="."]
+position = Vector2(18, 0)

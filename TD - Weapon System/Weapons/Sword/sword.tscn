@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://couyxtej5ccj2"]
 
-[ext_resource type="Script" path="res://sword.gd" id="1_7aa3s"]
+[ext_resource type="Script" path="res://Weapons/Sword/sword.gd" id="1_7aa3s"]
 [ext_resource type="Texture2D" uid="uid://mx2xvfdtrq3x" path="res://TheUltimateWeaponsPack_Sheet.png" id="2_xlevq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkaiy"]
-size = Vector2(18, 40)
+size = Vector2(37, 62)
 
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_7aa3s")
@@ -20,5 +20,5 @@ region_rect = Rect2(0, 312, 39, 5)
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(27, 0)
+position = Vector2(36.5, 0)
 shape = SubResource("RectangleShape2D_wkaiy")

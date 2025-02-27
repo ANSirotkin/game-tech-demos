@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var health = 100
 
-func damage(dmg: int):
+func take_damage(dmg: int):
 	health -= dmg
 	print(health)
 	if health <= 0:

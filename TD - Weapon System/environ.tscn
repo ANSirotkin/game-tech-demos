@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1me4kcywfmxx"]
+[gd_scene load_steps=5 format=3 uid="uid://d1me4kcywfmxx"]
 
-[ext_resource type="PackedScene" uid="uid://cqa0j4qcu6uiq" path="res://player.tscn" id="1_ynlr2"]
+[ext_resource type="PackedScene" uid="uid://cqa0j4qcu6uiq" path="res://Player/player.tscn" id="1_ynlr2"]
+[ext_resource type="PackedScene" uid="uid://dhcbe4f6lqpa8" path="res://Dummy/dummy.tscn" id="2_ut57i"]
 
 [sub_resource type="Gradient" id="Gradient_k22gf"]
 
@@ -16,3 +17,9 @@ height = 256
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
 texture = SubResource("GradientTexture2D_fsefw")
+
+[node name="Dummy" parent="." instance=ExtResource("2_ut57i")]
+position = Vector2(-115, -62)
+
+[node name="Dummy2" parent="." instance=ExtResource("2_ut57i")]
+position = Vector2(65, -59)
