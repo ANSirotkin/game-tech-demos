@@ -24,8 +24,8 @@ func attack():
 func damage_attack(area: Area2D):
 	var entity = area.get_parent()
 	if player_owner && entity.is_in_group("enemy") && entity not in damaged:
-		entity.damage(attack_damage)
+		entity.take_damage(attack_damage)
 		damaged.append(entity)
 	elif !player_owner && entity.is_in_group("player") && entity not in damaged:
-		entity.damage(attack_damage)
+		entity.take_damage(attack_damage)
 		damaged.append(entity)

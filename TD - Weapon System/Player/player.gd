@@ -3,13 +3,13 @@ extends CharacterBody2D
 @export var equipped_weapon_packed: PackedScene = load("res://Weapons/Blicky/blicky.tscn")
 var equipped_weapon: Weapon
 
-const max_speed: int = 200
+var max_speed: int = 200
 var input: Vector2
 
 func _ready():
 	equipped_weapon = equipped_weapon_packed.instantiate()
 	add_child(equipped_weapon)
-
+	
 func _physics_process(_delta: float):
 	$Sprite.flip_h = get_local_mouse_position().x < 0
 	player_movement()
