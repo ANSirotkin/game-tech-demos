@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ds1ei877lx3ph"]
+
+[ext_resource type="Script" path="res://segment_direct.gd" id="1_ko6ph"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_84jxd"]
+radius = 16.0
+
+[sub_resource type="Gradient" id="Gradient_k4xes"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_byogs"]
+gradient = SubResource("Gradient_k4xes")
+width = 32
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_3rubo"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_itvkv"]
+gradient = SubResource("Gradient_3rubo")
+
+[node name="Segment_Direct" type="CharacterBody2D"]
+script = ExtResource("1_ko6ph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_84jxd")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Rotated" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Rotated"]
+texture = SubResource("GradientTexture2D_byogs")
+
+[node name="Tail_Position" type="Node2D" parent="Rotated"]
+position = Vector2(-16, 0)
+
+[node name="Chain" type="Sprite2D" parent="Rotated"]
+position = Vector2(19, 0)
+scale = Vector2(0.28125, 0.125)
+texture = SubResource("GradientTexture2D_itvkv")
