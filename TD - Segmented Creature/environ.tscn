@@ -12,7 +12,7 @@ height = 300
 
 [node name="Environ" type="Node2D"]
 script = ExtResource("1_7oegg")
-snake_length = 50
+snake_length = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_pbcvs")

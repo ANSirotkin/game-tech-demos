@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds1ei877lx3ph"]
+[gd_scene load_steps=8 format=3 uid="uid://ds1ei877lx3ph"]
 
 [ext_resource type="Script" path="res://segment_direct.gd" id="1_ko6ph"]
 
@@ -19,6 +19,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_itvkv"]
 gradient = SubResource("Gradient_3rubo")
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_is0ns"]
+size = Vector2(12, 12)
+
 [node name="Segment_Direct" type="CharacterBody2D"]
 script = ExtResource("1_ko6ph")
 
@@ -27,6 +30,7 @@ shape = SubResource("CircleShape2D_84jxd")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
 [node name="Rotated" type="Node2D" parent="."]
 
@@ -34,9 +38,19 @@ disabled = true
 texture = SubResource("GradientTexture2D_byogs")
 
 [node name="Tail_Position" type="Node2D" parent="Rotated"]
-position = Vector2(-16, 0)
+position = Vector2(-30, 0)
 
 [node name="Chain" type="Sprite2D" parent="Rotated"]
-position = Vector2(19, 0)
+position = Vector2(20, 0)
 scale = Vector2(0.28125, 0.125)
 texture = SubResource("GradientTexture2D_itvkv")
+
+[node name="Chain2" type="Sprite2D" parent="Rotated"]
+position = Vector2(-20, 0)
+scale = Vector2(0.28125, 0.125)
+texture = SubResource("GradientTexture2D_itvkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotated"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-30, 0)
+texture = SubResource("PlaceholderTexture2D_is0ns")

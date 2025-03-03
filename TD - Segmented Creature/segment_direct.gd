@@ -8,33 +8,43 @@ class_name Segment_Direct
 
 var head : Segment_Direct = null
 var tail : Segment_Direct = null
-
-@export var speed : int = 600
+@export var speed : int = 1000
 var steering_strength : int = speed / 20
 
 func _ready():
-	if head != null: $Camera2D.queue_free()
-	
-	get_parent().snake_spawned.connect(assign_color)
+	if head != null: 
+		$Camera2D.queue_free()
+		if head.sprite.modulate.r >= 1 or head.sprite.modulate.g >= 1 or head.sprite.modulate.b >= 1:
+			sprite.modulate = Color.BLACK
+		else:
+			sprite.modulate = head.sprite.modulate + Color(.1, 0, .1)
+	else:
+		sprite.modulate = Color(0, 0, 0)
+	get_parent().snake_spawned.connect(snake_spawned)
 
-func assign_color():
+func snake_spawned():
 	if head == null: 
-		sprite.modulate = Color.RED
 		z_index = 1
 		chain.queue_free()
-	elif tail == null: 
-		sprite.modulate = Color.BLUE
-	else:
-		sprite.modulate = Color.GHOST_WHITE
+	#if tail != null:
+		#$Camera2D.queue_free()
 
 func _physics_process(delta: float):
 	if head == null:
 		head_movement(delta)
 	else:
 		tail_movement(delta)
+		
+	if Input.is_action_just_pressed("increase"):
+		speed += 100
+		
+	elif Input.is_action_just_pressed("decrease"):
+		speed -= 100
 	
-	rotated.look_at(velocity + sprite.global_position)
-	move_and_slide()
+	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		move_and_slide()
+		rotated.look_at(velocity + sprite.global_position)
+
 
 func head_movement(delta: float):
 	var desired_position = get_global_mouse_position() - global_position
